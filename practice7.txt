@@ -1,0 +1,66 @@
+1)
+##если помнить, что n - натуральное число, то if else в конце не нужны
+n = int(input("Введите n: "))
+def print_till_zero(x):
+    if x == 0:
+        return 
+    else:
+        print(x)
+        x = x - 1
+        return print_till_zero(x)
+if n <= 0:
+    print("n должно быть больше нуля!")
+else:
+    d = print_till_zero(n)
+
+2)
+a = str(input("Введите строку: "))
+def is_palindrome(s):
+    if len(s) < 1:
+        return True
+    else:
+        if s[0] == s[-1]:
+            return is_palindrome(s[1:-1])
+        else:
+            return False
+if (is_palindrome(a) == True):
+    print("Это палиндром!")
+else:
+    print("Это не палиндром")
+
+3)
+def power(base, exp):
+    if (exp == 1):
+        return (base)
+    else:
+        return (base * power(base, exp - 1))
+base = int(input("Введите число: "))
+exp = int(input("Введите показатель степени: "))
+print("Результат:", power(base, exp))
+
+4)
+j = 0
+i = 0
+def max_in(l, i, j):
+    if len(l) == 1:
+        return l[0]
+    else:
+        #globals()['j'] = i
+        i= i + 1 
+        print ("j=",globals()['j'],"i=", i)
+        ln=max(l[0], max_in(l[1:], i, j))
+        if ln == l[0]: globals()['k'] = i - 1
+        print("i=", i,"j=",j,"l[0]=",l[0],"ln=",ln)
+        return ln
+l = [600, 3, 608, 703, 101, 630]
+globals()['k'] = len(l)
+ln = max_in(l, i, 0)
+print("Максимум=",ln)
+print ("Номер в списке:", globals()['k'])
+
+5)
+x = int(input("Введите x: "))
+def fib(n):
+    if n in (1,2): return 1
+    else: return fib(n-1)+fib(n-2)
+print(fib(x))	
